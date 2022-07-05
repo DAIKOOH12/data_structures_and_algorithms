@@ -2,6 +2,7 @@
 using namespace std;
 bool kiemTraSoNguyenTo(int a)
 {
+    //Hello my friend
     if(a==0||a==1) return false;
     int i=2;
     while(i*i<=a)

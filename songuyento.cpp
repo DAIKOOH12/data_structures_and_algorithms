@@ -2,8 +2,6 @@
 using namespace std;
 bool kiemTraSoNguyenTo(int a)
 {
-    //Hello my friend
-    cout<<"Kiem tra so nguyen to\n";
     if(a==0||a==1) return false;
     int i=2;
     while(i*i<=a)

@@ -15,15 +15,18 @@ int binarySearch(vector<int> &a,int n,int x)
 {
     int left=0,right=n-1,middle;
     //1 4 6 12 18 22 56
+    //x=6
     do
     {
-        middle=(left+right)/2;
+        middle=(left+right)/2;//a[middle]=12
         if(a[middle]==x)
             break;
         if(a[middle]>x)
             right = middle-1;
+            //1 4 6
         else
             left = middle+1;
+            //18 22 56
     }
     while(left<=right);
     if(left<=right) return middle;

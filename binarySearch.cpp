@@ -14,6 +14,7 @@ void nhapMang(vector<int> &a,int &n)
 int binarySearch(vector<int> &a,int n,int x)
 {
     int left=0,right=n-1,middle;
+    //1 4 6 12 18 22 56
     do
     {
         middle=(left+right)/2;

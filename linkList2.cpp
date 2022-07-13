@@ -4,7 +4,7 @@ struct SinhVien
 {
     string hoten;
     string lop;
-    int dtb;
+    float dtb;
     SinhVien *next;
 };
 typedef struct List
@@ -31,7 +31,7 @@ SinhVien *taoNote(SinhVien &sv)
     p->next=NULL;
     return p;
 }
-void insertNode(List &Q,SinhVien *p)
+void insertNodeLast(List &Q,SinhVien *p)
 {
     if(!Q.head)
         Q.head=Q.tail=p;
@@ -39,6 +39,16 @@ void insertNode(List &Q,SinhVien *p)
     {
         Q.tail->next=p;
         Q.tail=p;
+    }
+}
+void insertNodeFirst(List &Q,SinhVien *p)
+{
+    if(!Q.head)
+        Q.head=Q.tail=p;
+    else
+    {
+        p->next=Q.head;
+        Q.head=p;
     }
 }
 void nhapDSSV(List &Q)
@@ -60,7 +70,7 @@ void nhapDSSV(List &Q)
         cin>>sv.dtb;
         fflush(stdin);
         SinhVien *p=taoNote(sv);
-        insertNode(Q,p);
+        insertNodeFirst(Q,p);
     }
 }
 void xuatSV(SinhVien *p)

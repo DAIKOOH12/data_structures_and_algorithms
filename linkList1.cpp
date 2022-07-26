@@ -1,77 +1,87 @@
 #include <bits/stdc++.h>
 using namespace std;
-typedef struct Node{
+struct Node //Định nghĩa kiểu dữ node
+{
     int data;
     Node *next;
 };
-typedef struct List
+struct LIST //Định nghĩa danh sách liên kết đơn
 {
-  Node *head;
-  Node *tail;
+    Node *head;
+    Node *tail;
 };
-void init(List &Q)
+void initList(LIST &l)  //Hàm khởi tạo danh sách liên kết đơn
 {
-    Q.head=NULL;
-    Q.tail=NULL;
+    l.head=NULL;
+    l.tail=NULL;
 }
-Node* createNode(int a )
+Node *createNode(int a) //Hàm khởi tạo 1 node trước khi thêm vào DSLK
 {
     Node *p=new Node;
     if(p==NULL)
     {
-        cout<<"Khong tao duoc Node";
-        exit(1);
+        cout<<"Khong the khoi tao node";
+        return NULL;
     }
     p->data=a;
     p->next=NULL;
     return p;
 }
-void pushNodeFirst(List &Q,Node *p)
+void insertHead(LIST &l,Node *p) //Hàm thêm 1 node vào đầu danh sách liên kết
 {
-    if(!Q.head)
-        Q.head=Q.tail=p;
+    if(l.head==NULL)
+    {
+        l.head=l.tail=p; //Nếu DSLK rỗng thì gán con trỏ head và tail = p
+    }
     else
     {
-        p->next=Q.head;
-        Q.head = p;
+        p->next=l.head; //Dùng con trỏ next của p nối tới head của dslk
+        l.head=p; //Gán lại giá trị cho head
     }
 }
-void pushNodeLast(List &Q,Node *p)
+void insertLast(LIST &l,Node *p)
 {
-    if(!Q.head)
-        Q.head=Q.tail=p;
-    else{
-        Q.tail->next=p;
-        Q.tail=p;
-    }
-}
-void nhapGiaTriNode(List &Q)
-{
-    int n;
-    cout<<"Nhap so luong: ";cin>>n;
-    for(int i=0;i<n;i++)
+    if(l.head==NULL)
     {
-        int a;cin>>a;
-        Node *p= createNode(a);
-        pushNodeFirst(Q,p);
+        l.head=l.tail=p;
+    }
+    else
+    {
+        l.tail->next=p;
+        l.tail=p;
     }
 }
-void xuat(Node *p){
-	cout<<setw(10)<<p->data<<endl;
+void nhapDSLK(LIST &l,int &n)
+{
+    cout<<"Nhap so luong phan tu: ";cin>>n;
+    for(int i=1;i<=n;i++)
+    {
+        int b;
+        cout<<"Nhap gia tri node: ";
+        cin>>b;
+        Node *p=createNode(b);
+        insertLast(l,p);
+    }
 }
-void xuatDS(List Q ){
-    Node *p = Q.head;
+void xuatNode(Node *p)
+{
+    cout<<setw(10)<<p->data<<endl;
+}
+void xuatDSLK(LIST l)
+{
+    Node *p=l.head;
     cout<<setw(10)<<"Gia tri"<<endl;
-    while(p!=NULL){
-        xuat(p);
-        p = p->next;
+    while(p!=NULL)
+    {
+        xuatNode(p);
+        p=p->next;
     }
-    cout<< endl;
 }
 int main()
 {
-      List Q;
-      init(Q);
-      nhapGiaTriNode(Q);
-      xuatDS(Q);
+    int n;
+    LIST l;
+    initList(l);
+    nhapDSLK(l,n);
+    xuatDSLK(l);
 }

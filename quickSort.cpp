@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+    #include <bits/stdc++.h>
 using namespace std;
 void nhapMang(vector<int> &a,int &n)
 {

@@ -1,2 +1,2 @@
 Nhap so luong phan tu: 
-Mang sau khi sort: 1 2 4 5 6 8 12 15 
+Mang sau khi sort: 1 46 132 213 663 768 1231 2135 4123 5423 
